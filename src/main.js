@@ -1,8 +1,19 @@
 import './style.css'
+import iconHamburger from './assets/images/icon-hamburger.svg'
+import iconClose from './assets/images/icon-close.svg'
+
+
 
 const urlInput = document.querySelector('#url-input')
 const urlForm = document.querySelector('.url-form')
 const errorMessage = document.querySelector('.error-msg')
+
+const buttonMenu = document.querySelector('.btn-menu')
+const navMenu = document.querySelector('.nav-menu')
+const iconMenu = document.querySelector('.icon-menu')
+
+
+// url validation
 
 urlForm.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -26,3 +37,20 @@ urlForm.addEventListener('submit', (e) => {
     alert('Success url!')
   }
 })
+
+// menu
+
+buttonMenu.addEventListener('click', () => {
+  if (navMenu.classList.contains('hidden')) {
+    navMenu.classList.remove('hidden')
+    navMenu.classList.add('flex')
+    buttonMenu.setAttribute('aria-expanded', true)
+    iconMenu.src = iconClose;
+  } else {
+    navMenu.classList.add('hidden')
+    navMenu.classList.remove('flex')
+    buttonMenu.setAttribute('aria-expanded', false)
+    iconMenu.src = iconHamburger;
+  }
+
+}) 
